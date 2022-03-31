@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.API", "src\Example.API\Example.API.csproj", "{D100A491-AD18-4A39-A13E-A6A22415AD46}"
 EndProject
@@ -17,6 +17,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Infra.Data", "src\Example.Infra.Data\Example.Infra.Data.csproj", "{38C12FD7-B4D5-4CC1-8C73-B57DA6E4BE15}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0C91101F-5BEF-4B8A-A0BD-B1C965F66020}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Example.Infra.Database", "..\Example.Infra.Database\Example.Infra.Database.sqlproj", "{61A61769-60D1-4B43-9E38-A51C103335DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,12 @@ Global
 		{0C91101F-5BEF-4B8A-A0BD-B1C965F66020}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C91101F-5BEF-4B8A-A0BD-B1C965F66020}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C91101F-5BEF-4B8A-A0BD-B1C965F66020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61A61769-60D1-4B43-9E38-A51C103335DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61A61769-60D1-4B43-9E38-A51C103335DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61A61769-60D1-4B43-9E38-A51C103335DA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{61A61769-60D1-4B43-9E38-A51C103335DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61A61769-60D1-4B43-9E38-A51C103335DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61A61769-60D1-4B43-9E38-A51C103335DA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
