@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Example.Application.ExampleService.Models.Request
 {
-    public record CityRequest
+    public record CreateCityRequest
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string State { get; set; }
     }
