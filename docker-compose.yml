@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: src/Example.API/Dockerfile
     environment:
-      DBConnection: 'Data Source=sqldata,1433;Initial Catalog=master;Persist Security Info=True;User ID=sa;Password=Stefanini@123'
+      DBConnection: 'Data Source=127.0.0.1\\desafio_backend_stefanini_sqldata_1,5434;Initial Catalog=master;Persist Security Info=True;User ID=sa;Password=Stefanini@123'
 
   sqldata:
     image: mcr.microsoft.com/mssql/server:2017-latest
