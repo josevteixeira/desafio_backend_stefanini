@@ -1,5 +1,5 @@
-using Example.Application.ExampleService.Service;
-using Example.Infra.Data;
+using Example.Application.CityService.Service;
+using Example.Application.PersonService.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddDbContext<Example.Infra.Data.FormContext>((DbContextOptionsBuilder o) => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();

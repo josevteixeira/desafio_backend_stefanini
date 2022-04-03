@@ -1,6 +1,5 @@
 ﻿using Example.Application.ExampleService.Models.Request;
-using Example.Application.ExampleService.Models.Response;
-using Example.Application.ExampleService.Service;
+using Example.Application.PersonService.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Example.API.Controllers

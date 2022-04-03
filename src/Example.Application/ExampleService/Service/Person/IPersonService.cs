@@ -2,7 +2,7 @@
 using Example.Application.ExampleService.Models.Response.Person;
 using System.Threading.Tasks;
 
-namespace Example.Application.ExampleService.Service
+namespace Example.Application.PersonService.Service
 {
     public interface IPersonService
     {

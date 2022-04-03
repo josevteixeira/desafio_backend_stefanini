@@ -3,11 +3,10 @@ using Microsoft.Extensions.Logging;
 using Example.Application.ExampleService.Models.Response.City;
 using Example.Application.ExampleService.Models.Dtos;
 using Example.Infra.Data;
-using Example.Application.ExampleService.Service;
 using Example.Application.Common;
 using Example.Application.ExampleService.Models.Request;
 
-namespace City.Application.CityService.Service
+namespace Example.Application.CityService.Service
 {
     public class CityService : BaseService<CityService>, ICityService
     {

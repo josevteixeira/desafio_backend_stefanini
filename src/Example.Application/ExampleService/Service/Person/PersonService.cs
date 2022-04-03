@@ -2,12 +2,11 @@
 using Example.Application.ExampleService.Models.Dtos;
 using Example.Application.ExampleService.Models.Request;
 using Example.Application.ExampleService.Models.Response.Person;
-using Example.Application.ExampleService.Service;
 using Example.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Person.Application.PersonService.Service
+namespace Example.Application.PersonService.Service
 {
     public class PersonService : BaseService<PersonService>, IPersonService
     {
@@ -66,7 +65,7 @@ namespace Person.Application.PersonService.Service
                 await _db.SaveChangesAsync();
             }
 
-            return new UpdatePersonResponse();
+            return true;
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -80,7 +79,7 @@ namespace Person.Application.PersonService.Service
                 await _db.SaveChangesAsync();
             }
 
-            return new DeletePersonResponse();
+            return true;
         }
     }
 }
