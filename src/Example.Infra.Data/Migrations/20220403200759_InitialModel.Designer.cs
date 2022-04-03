@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Example.Infra.Data.Migrations
 {
     [DbContext(typeof(FormContext))]
-    [Migration("20220403195723_InitialModel")]
+    [Migration("20220403200759_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,7 @@ namespace Example.Infra.Data.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Pessoa", "dbo");
+                    b.ToTable("Person", "dbo");
                 });
 
             modelBuilder.Entity("Example.Domain.ExampleAggregate.Person", b =>

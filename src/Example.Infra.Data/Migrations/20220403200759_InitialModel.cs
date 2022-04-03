@@ -27,7 +27,7 @@ namespace Example.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pessoa",
+                name: "Person",
                 schema: "dbo",
                 columns: table => new
                 {
@@ -40,9 +40,9 @@ namespace Example.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pessoa", x => x.Id);
+                    table.PrimaryKey("PK_Person", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pessoa_City_CityId",
+                        name: "FK_Person_City_CityId",
                         column: x => x.CityId,
                         principalSchema: "dbo",
                         principalTable: "City",
@@ -51,16 +51,16 @@ namespace Example.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pessoa_CityId",
+                name: "IX_Person_CityId",
                 schema: "dbo",
-                table: "Pessoa",
+                table: "Person",
                 column: "CityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Pessoa",
+                name: "Person",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

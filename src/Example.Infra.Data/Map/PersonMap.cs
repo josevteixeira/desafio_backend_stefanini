@@ -7,7 +7,7 @@ namespace Example.Infra.Data.Map
     {
         public void Configure(EntityTypeBuilder<Domain.ExampleAggregate.Person> orderConfiguration)
         {
-            orderConfiguration.ToTable("Pessoa", "dbo")
+            orderConfiguration.ToTable("Person", "dbo")
                 .HasKey(p => p.Id);
 
             orderConfiguration

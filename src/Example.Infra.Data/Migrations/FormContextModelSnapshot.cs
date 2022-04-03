@@ -72,7 +72,7 @@ namespace Example.Infra.Data.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Pessoa", "dbo");
+                    b.ToTable("Person", "dbo");
                 });
 
             modelBuilder.Entity("Example.Domain.ExampleAggregate.Person", b =>
