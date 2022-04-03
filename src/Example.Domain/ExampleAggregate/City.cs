@@ -22,7 +22,7 @@ namespace Example.Domain.ExampleAggregate
 
         public static City Create(string name, string state)
         {
-            if (string.IsNullOrEmpty(null))
+            if (string.IsNullOrEmpty(name))
                 throw new ArgumentException("Invalid " + nameof(name));
 
             if (string.IsNullOrEmpty(state) || state.Length > 2)
