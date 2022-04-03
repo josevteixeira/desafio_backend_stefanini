@@ -1,5 +1,4 @@
-﻿using Example.Domain.ExampleAggregate;
-
+﻿
 namespace Example.Application.ExampleService.Models.Dtos
 {
     public class PersonDto
@@ -8,7 +7,7 @@ namespace Example.Application.ExampleService.Models.Dtos
         public string Name { get; set; }
         public int Age { get; set; }
 
-        public static explicit operator PersonDto(Person v)
+        public static explicit operator PersonDto(Example.Domain.ExampleAggregate.Person v)
         {
             return new PersonDto()
             {

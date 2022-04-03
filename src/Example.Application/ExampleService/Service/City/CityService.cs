@@ -1,12 +1,13 @@
-﻿using Example.Application.Common;
-using Example.Application.ExampleService.Models.Dtos;
-using Example.Application.ExampleService.Models.Request;
-using Example.Application.ExampleService.Models.Response;
-using Example.Infra.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Example.Application.ExampleService.Models.Response.City;
+using Example.Application.ExampleService.Models.Dtos;
+using Example.Infra.Data;
+using Example.Application.ExampleService.Service;
+using Example.Application.Common;
+using Example.Application.ExampleService.Models.Request;
 
-namespace Example.Application.ExampleService.Service
+namespace City.Application.CityService.Service
 {
     public class CityService : BaseService<CityService>, ICityService
     {
@@ -17,42 +18,42 @@ namespace Example.Application.ExampleService.Service
             _db = db;
         }
 
-        public async Task<GetAllExampleResponse> GetAllAsync()
+        public async Task<GetAllCityResponse> GetAllAsync()
         {
             var entity = await _db.City.ToListAsync();
-            return new GetAllExampleResponse()
+            return new GetAllCityResponse()
             {
-                Examples = entity != null ? entity.Select(a => (PersonDto)a).ToList() : new List<PersonDto>()
+                Cities = entity != null ? entity.Select(a => (CityDto)a).ToList() : new List<CityDto>()
             };
         }
 
-        public async Task<GetByIdExampleResponse> GetByIdAsync(int id)
+        public async Task<GetByIdCityResponse> GetByIdAsync(int id)
         {
 
-            var response = new GetByIdExampleResponse();
+            var response = new GetByIdCityResponse();
 
             var entity = await _db.City.FirstOrDefaultAsync(item => item.Id == id);
 
-            if (entity != null) response.Example = (PersonDto)entity;
+            if (entity != null) response.City = (CityDto)entity;
 
             return response;
         }
 
-        public async Task<CreateExampleResponse> CreateAsync(CreateCityRequest request)
+        public async Task<CreateCityResponse> CreateAsync(CreateCityRequest request)
         {
             if (request == null)
                 throw new ArgumentException("Request empty!");
 
-            var newExample = Domain.ExampleAggregate.City.Create(request.Name, request.Age, request.Document, request.CityId);
+            var newCity = Example.Domain.ExampleAggregate.City.Create(request.Name, request.Age, request.Document, request.CityId);
 
-            _db.City.Add(newExample);
+            _db.City.Add(newCity);
 
             await _db.SaveChangesAsync();
 
-            return new CreateExampleResponse() { Id = newExample.Id };
+            return new CreateCityResponse() { Id = newCity.Id };
         }
 
-        public async Task<UpdateExampleResponse> UpdateAsync(UpdateCityRequest request)
+        public async Task<bool> UpdateAsync(UpdateCityRequest request)
         {
             if (request == null)
                 throw new ArgumentException("Request empty!");
@@ -65,10 +66,10 @@ namespace Example.Application.ExampleService.Service
                 await _db.SaveChangesAsync();
             }
 
-            return new UpdateExampleResponse();
+            return new UpdateCityResponse();
         }
 
-        public async Task<DeleteExampleResponse> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
 
             var entity = await _db.City.FirstOrDefaultAsync(item => item.Id == id);
@@ -79,7 +80,7 @@ namespace Example.Application.ExampleService.Service
                 await _db.SaveChangesAsync();
             }
 
-            return new DeleteExampleResponse();
+            return new DeleteCityResponse();
         }
     }
 }
