@@ -12,24 +12,25 @@ namespace Example.Infra.Data.Map
 
             orderConfiguration
                 .Property(p => p.Id)
-                .HasColumnName("Id")
                 .UseIdentityColumn();
 
             orderConfiguration
                 .Property(p => p.Name)
-                .HasColumnName("Nome");
+                .HasMaxLength(300)
+                .IsRequired();
 
             orderConfiguration
                 .Property(p => p.Document)
-                .HasColumnName("CPF");
+                .HasMaxLength(11)
+                .IsRequired();
 
             orderConfiguration
                 .Property(p => p.Age)
-                .HasColumnName("Idade");
+                .IsRequired();
 
             orderConfiguration
                 .Property(p => p.CityId)
-                .HasColumnType("Id_Cidade");
+                .IsRequired(); ;
 
             orderConfiguration
                 .HasOne(p => p.City)

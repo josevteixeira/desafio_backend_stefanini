@@ -15,10 +15,14 @@ namespace Example.Infra.Data.Map
                 .UseIdentityColumn();
 
             orderConfiguration
-                .Property(p => p.Name);
+                .Property(p => p.Name)
+                .HasMaxLength(200)
+                .IsRequired();
 
             orderConfiguration
-                .Property(p => p.State);
+                .Property(p => p.State)
+                .HasMaxLength(2)
+                .IsRequired();
         }
     }
 }
