@@ -21,7 +21,7 @@ namespace Example.Infra.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Example.Domain.ExampleAggregate.Example", b =>
+            modelBuilder.Entity("Example.Domain.ExampleAggregate.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,12 +34,41 @@ namespace Example.Infra.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("Document")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<int>("CityId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Example", "dbo");
+                    b.ToTable("Person", "dbo");
                 });
+
+            modelBuilder.Entity("Example.Domain.ExampleAggregate.City", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(200)");
+
+                b.Property<string>("State")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(2)");
+
+                b.HasKey("Id");
+
+                b.ToTable("City", "dbo");
+            });
 #pragma warning restore 612, 618
         }
     }
