@@ -1,20 +1,21 @@
 ﻿using Example.Domain.ExampleAggregate;
 
+
 namespace Example.Application.ExampleService.Models.Dtos
 {
-    public class ExampleDto
+    public class CityDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Age { get; set; }
+        public string State { get; set; }
 
-        public static explicit operator ExampleDto(Domain.ExampleAggregate.Person v)
+        public static explicit operator CityDto(City v)
         {
-            return new ExampleDto()
+            return new CityDto()
             {
                 Id = v.Id,
                 Name = v.Name,
-                Age = v.Age
+                State = v.State
             };
         }
     }

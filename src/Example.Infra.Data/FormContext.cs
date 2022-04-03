@@ -11,10 +11,11 @@ namespace Example.Infra.Data
     /// Rererência de artigo para conseguir criar migration a partir de dominios
     /// https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/managing?tabs=dotnet-core-cli
     /// </summary>
-    public class PersonContext : DbContext
+    public class FormContext : DbContext
     {
         public DbSet<Domain.ExampleAggregate.Person> Person { get; set; }
-        public PersonContext(DbContextOptions options) : base(options)
+        public DbSet<Domain.ExampleAggregate.City> City { get; set; }
+        public FormContext(DbContextOptions options) : base(options)
         {
         }
 
@@ -22,8 +23,9 @@ namespace Example.Infra.Data
         {
 
             modelBuilder.ApplyConfiguration(new PersonMap());
+            modelBuilder.ApplyConfiguration(new CityMap());
             modelBuilder.Entity<Domain.ExampleAggregate.Person>();
-
+            modelBuilder.Entity<Domain.ExampleAggregate.City>();
         }
     }
 }

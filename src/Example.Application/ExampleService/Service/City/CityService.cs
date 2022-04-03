@@ -8,21 +8,21 @@ using Microsoft.Extensions.Logging;
 
 namespace Example.Application.ExampleService.Service
 {
-    public class PersonService : BaseService<PersonService>, IPersonService
+    public class CityService : BaseService<CityService>, ICityService
     {
-        private readonly PersonContext _db;
+        private readonly FormContext _db;
 
-        public PersonService(ILogger<PersonService> logger, Infra.Data.PersonContext db) : base(logger)
+        public CityService(ILogger<CityService> logger, FormContext db) : base(logger)
         {
             _db = db;
         }
 
         public async Task<GetAllExampleResponse> GetAllAsync()
         {
-            var entity = await _db.Person.ToListAsync();
+            var entity = await _db.City.ToListAsync();
             return new GetAllExampleResponse()
             {
-                Examples = entity != null ? entity.Select(a => (ExampleDto)a).ToList() : new List<ExampleDto>()
+                Examples = entity != null ? entity.Select(a => (PersonDto)a).ToList() : new List<PersonDto>()
             };
         }
 
@@ -31,33 +31,33 @@ namespace Example.Application.ExampleService.Service
 
             var response = new GetByIdExampleResponse();
 
-            var entity = await _db.Person.FirstOrDefaultAsync(item => item.Id == id);
+            var entity = await _db.City.FirstOrDefaultAsync(item => item.Id == id);
 
-            if (entity != null) response.Example = (ExampleDto)entity;
+            if (entity != null) response.Example = (PersonDto)entity;
 
             return response;
         }
 
-        public async Task<CreateExampleResponse> CreateAsync(CreatePersonRequest request)
+        public async Task<CreateExampleResponse> CreateAsync(CreateCityRequest request)
         {
             if (request == null)
                 throw new ArgumentException("Request empty!");
 
-            var newExample = Domain.ExampleAggregate.Person.Create(request.Name, request.Age, request.Document, request.CityId);
+            var newExample = Domain.ExampleAggregate.City.Create(request.Name, request.Age, request.Document, request.CityId);
 
-            _db.Person.Add(newExample);
+            _db.City.Add(newExample);
 
             await _db.SaveChangesAsync();
 
             return new CreateExampleResponse() { Id = newExample.Id };
         }
 
-        public async Task<UpdateExampleResponse> UpdateAsync(UpdatePersonRequest request)
+        public async Task<UpdateExampleResponse> UpdateAsync(UpdateCityRequest request)
         {
             if (request == null)
                 throw new ArgumentException("Request empty!");
 
-            var entity = await _db.Person.FirstOrDefaultAsync(item => item.Id == request.Id);
+            var entity = await _db.City.FirstOrDefaultAsync(item => item.Id == request.Id);
 
             if (entity != null)
             {
@@ -71,7 +71,7 @@ namespace Example.Application.ExampleService.Service
         public async Task<DeleteExampleResponse> DeleteAsync(int id)
         {
 
-            var entity = await _db.Person.FirstOrDefaultAsync(item => item.Id == id);
+            var entity = await _db.City.FirstOrDefaultAsync(item => item.Id == id);
 
             if (entity != null)
             {

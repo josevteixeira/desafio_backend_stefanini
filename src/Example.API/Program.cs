@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IPersonService, PersonService>();
-builder.Services.AddDbContext<PersonContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<Example.Infra.Data.FormContext>((DbContextOptionsBuilder o) => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
 
 using (var scope = app.Services.CreateScope())
 {
-    var dataContext = scope.ServiceProvider.GetRequiredService<PersonContext>();
+    var dataContext = scope.ServiceProvider.GetRequiredService<global::Example.Infra.Data.FormContext>();
     dataContext.Database.Migrate();
 }
 
