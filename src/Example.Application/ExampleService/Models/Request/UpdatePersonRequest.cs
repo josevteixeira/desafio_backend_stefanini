@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Example.Application.ExampleService.Models.Request
 {
-    public record PersonRequest
+    public record UpdatePersonRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string CPF { get; set; }
+        public string Document { get; set; }
         public int CityId { get; set; }
         public int Age { get; set; }
     }

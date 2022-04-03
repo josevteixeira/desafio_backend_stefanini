@@ -7,11 +7,11 @@ namespace Example.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExampleController : BaseController
+    public class PersonController : BaseController
     {
-        private readonly IExampleService _service;
+        private readonly IPersonService _service;
 
-        public ExampleController(ILogger<ExampleController> logger, IExampleService service) : base()
+        public PersonController(ILogger<PersonController> logger, IPersonService service) : base()
         {
             _service = service;
         }
@@ -49,7 +49,7 @@ namespace Example.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateExampleRequest request)
+        public async Task<IActionResult> Post([FromBody] CreatePersonRequest request)
         {
             try
             {
@@ -67,11 +67,11 @@ namespace Example.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] UpdateExampleRequest request)
+        public async Task<IActionResult> Put(int id, [FromBody] UpdatePersonRequest request)
         {
             try
             {
-                var action = await _service.UpdateAsync(id, request);
+                var action = await _service.UpdateAsync(request);
                 return Ok(action);
             }
             catch (ArgumentException ex)
