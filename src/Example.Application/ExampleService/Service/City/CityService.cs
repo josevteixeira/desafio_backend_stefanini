@@ -44,7 +44,7 @@ namespace City.Application.CityService.Service
             if (request == null)
                 throw new ArgumentException("Request empty!");
 
-            var newCity = Example.Domain.ExampleAggregate.City.Create(request.Name, request.Age, request.Document, request.CityId);
+            var newCity = Example.Domain.ExampleAggregate.City.Create(request.Name, request.State);
 
             _db.City.Add(newCity);
 
@@ -62,11 +62,11 @@ namespace City.Application.CityService.Service
 
             if (entity != null)
             {
-                entity.Update(request.Name, request.Age, request.Document);
+                entity.Update(request.Name, request.State);
                 await _db.SaveChangesAsync();
             }
 
-            return new UpdateCityResponse();
+            return true;
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -80,7 +80,7 @@ namespace City.Application.CityService.Service
                 await _db.SaveChangesAsync();
             }
 
-            return new DeleteCityResponse();
+            return true;
         }
     }
 }

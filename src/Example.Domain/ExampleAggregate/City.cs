@@ -19,5 +19,25 @@ namespace Example.Domain.ExampleAggregate
         public string Name { get; set; }
 
         public string State { get; set; }
+
+        public static City Create(string name, string state)
+        {
+            if (string.IsNullOrEmpty(null))
+                throw new ArgumentException("Invalid " + nameof(name));
+
+            if (string.IsNullOrEmpty(state) || state.Length > 2)
+                throw new ArgumentException("Invalid " + nameof(state));
+
+            return new City(name, state);
+        }
+
+        public void Update(string name, string state)
+        {
+            if (!string.IsNullOrEmpty(name))
+                Name = name;
+
+            if (!string.IsNullOrEmpty(state))
+                State = state;
+        }
     }
 }
