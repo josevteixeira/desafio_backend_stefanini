@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddScoped<ICityService, CityService>();
-builder.Services.AddDbContext<Example.Infra.Data.FormContext>((DbContextOptionsBuilder o) => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<Example.Infra.Data.FormContext>((DbContextOptionsBuilder o) => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("Example.Infra.Data")));
 
 var app = builder.Build();
 

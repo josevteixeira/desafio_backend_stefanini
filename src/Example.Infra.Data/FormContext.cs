@@ -1,4 +1,5 @@
-﻿using Example.Infra.Data.Map;
+﻿using Example.Domain.ExampleAggregate;
+using Example.Infra.Data.Map;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
@@ -24,8 +25,8 @@ namespace Example.Infra.Data
 
             modelBuilder.ApplyConfiguration(new PersonMap());
             modelBuilder.ApplyConfiguration(new CityMap());
-            modelBuilder.Entity<Domain.ExampleAggregate.Person>();
-            modelBuilder.Entity<Domain.ExampleAggregate.City>();
+            modelBuilder.Entity<Person>();
+            modelBuilder.Entity<City>();
         }
     }
 }
